@@ -28,3 +28,25 @@ console.log(somma3(10, 3))
 const quadrato = (num) => num ** 2
 console.log(quadrato(7))
 
+
+// 🏆 Snack 3
+// Crea una funzione eseguiOperazione
+// Definisci una funzione eseguiOperazione che accetta tre parametri: due numeri e una funzione operatore (callback). La funzione deve eseguire l'operazione fornita sui due numeri.
+
+
+function eseguioperazione(a, b, callback) {
+    return callback(a, b)
+}
+
+console.log(eseguioperazione(7, 7, somma))
+console.log(eseguioperazione(7, 23, somma))
+
+// 🏆 Snack 4
+// Crea un generatore di funzioni creaTimer
+// Scrivi una funzione creaTimer che accetta un tempo (in ms) e restituisce una nuova funzione che avvia un setTimeout per stampare "Tempo scaduto!".
+function creaTimer(time) {
+    return () => setTimeout(() => console.log('Tempo scaduto!'), time)
+}
+
+const timer = creaTimer(2000)
+timer()
