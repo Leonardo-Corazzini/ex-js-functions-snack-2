@@ -67,3 +67,31 @@ function stampaOgniSecondo(messaggio) {
 
 
 stampaOgniSecondo('stampami')
+// 🏆 Snack 6
+// Crea un contatore automatico con setInterval
+// Definisci una funzione creaContatoreAutomatico che accetta un intervallo di tempo e restituisce una funzione che avvia un setInterval, incrementando un contatore e stampandolo.
+function creaContatoreAutomatico(time) {
+    let conto = 0
+    return function () {
+        const interval = setInterval(() => (conto++, console.log(conto)), time)
+        setTimeout(() => clearInterval(interval), 10000)
+    }
+
+}
+const contatore = creaContatoreAutomatico(1000)
+contatore()
+// 🏆 Snack 7
+// Crea una funzione che ferma un timer dopo un certo tempo
+// Scrivi una funzione eseguiEferma che accetta un messaggio, un tempo di avvio e un tempo di stop. Il messaggio deve essere stampato a intervalli regolari, ma si deve fermare dopo il tempo di stop.
+// 🎯 Snack 8 (Bonus)
+// Crea una funzione che simula un conto alla rovescia
+// Scrivi una funzione contoAllaRovescia che accetta un numero n e stampa il conto alla rovescia da n a 0, con un intervallo di 1 secondo tra ogni numero. Quando arriva a 0, stampa "Tempo scaduto!" e interrompe il timer.
+// 🎯 Snack 9 (Bonus)
+// Creare una funzione che esegue una sequenza di operazioni con ritardi
+// Scrivi una funzione sequenzaOperazioni che accetta un array di operazioni (funzioni) e un tempo di intervallo.
+
+// Ogni operazione deve essere eseguita in sequenza con un ritardo uguale al tempo di interva
+// Creare un throttler per limitare l’esecuzione di una funzione
+// Scrivi una funzione creaThrottler che accetta una funzione e un tempo `limite`.
+
+// Restituisce una nuova funzione che, quando chiamata ripetutamente, esegue l'operazione originale al massimo una volta ogni n millisecondi.
