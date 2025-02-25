@@ -95,27 +95,42 @@
 // 🎯 Snack 8 (Bonus)
 // Crea una funzione che simula un conto alla rovescia
 // Scrivi una funzione contoAllaRovescia che accetta un numero n e stampa il conto alla rovescia da n a 0, con un intervallo di 1 secondo tra ogni numero. Quando arriva a 0, stampa "Tempo scaduto!" e interrompe il timer.
-function contoAllaRovescia(num) {
-    let conto = num
-    const interval = setInterval(() => {
-        console.log(conto)
-        conto--
+// function contoAllaRovescia(num) {
+//     let conto = num
+//     const interval = setInterval(() => {
+//         console.log(conto)
+//         conto--
 
-    }, 1000);
-    setTimeout(() => {
-        clearInterval(interval)
-        console.log('tempo scaduto')
-    }, num * 1000);
-}
+//     }, 1000);
+//     setTimeout(() => {
+//         clearInterval(interval)
+//         console.log('tempo scaduto')
+//     }, num * 1000);
+// }
 
-contoAllaRovescia(10)
+// contoAllaRovescia(10)
 
 // 🎯 Snack 9 (Bonus)
 // Creare una funzione che esegue una sequenza di operazioni con ritardi
 // Scrivi una funzione sequenzaOperazioni che accetta un array di operazioni (funzioni) e un tempo di intervallo.
 
-// Ogni operazione deve essere eseguita in sequenza con un ritardo uguale al tempo di interva
-// Creare un throttler per limitare l’esecuzione di una funzione
-// Scrivi una funzione creaThrottler che accetta una funzione e un tempo `limite`.
+// Ogni operazione deve essere eseguita in sequenza con un ritardo uguale al tempo di intervallo.
+const esempio1 = () => console.log('esempio 1')
+const esempio2 = () => console.log('esempio 2')
+const esempio3 = () => console.log('esempio 3')
+function sequenzaOperazioni(arr, time) {
+    let count = 0
+    const interval = setInterval(() => {
+        if (count >= arr.length) {
+            clearInterval(interval);
+            return;
+        }
+        arr[count]()
+        count++
+    }, time);
 
-// Restituisce una nuova funzione che, quando chiamata ripetutamente, esegue l'operazione originale al massimo una volta ogni n millisecondi.
+
+}
+
+
+sequenzaOperazioni([esempio1, esempio2, esempio3], 1000)
