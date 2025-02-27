@@ -115,22 +115,50 @@
 // Scrivi una funzione sequenzaOperazioni che accetta un array di operazioni (funzioni) e un tempo di intervallo.
 
 // Ogni operazione deve essere eseguita in sequenza con un ritardo uguale al tempo di intervallo.
-const esempio1 = () => console.log('esempio 1')
-const esempio2 = () => console.log('esempio 2')
-const esempio3 = () => console.log('esempio 3')
-function sequenzaOperazioni(arr, time) {
-    let count = 0
-    const interval = setInterval(() => {
-        if (count >= arr.length) {
-            clearInterval(interval);
-            return;
+// const esempio1 = () => console.log('esempio 1')
+// const esempio2 = () => console.log('esempio 2')
+// const esempio3 = () => console.log('esempio 3')
+// function sequenzaOperazioni(arr, time) {
+//     let count = 0
+//     const interval = setInterval(() => {
+//         if (count >= arr.length) {
+//             clearInterval(interval);
+//             return;
+//         }
+//         arr[count]()
+//         count++
+//     }, time);
+
+
+// }
+
+
+// sequenzaOperazioni([esempio1, esempio2, esempio3], 1000)
+
+// Creare un throttler per limitare l’esecuzione di una funzione
+// Scrivi una funzione creaThrottler che accetta una funzione e un tempo `limite`.
+
+// Restituisce una nuova funzione che, quando chiamata ripetutamente, esegue l'operazione originale al massimo una volta ogni n millisecondi.
+
+
+function creaThrottler(callback, limite) {
+    let ultimaEsecuzione = 0
+
+    return function () {
+        const ora = Date.now()
+
+        if (ora - ultimaEsecuzione >= limite) {
+            ultimaEsecuzione = ora
+            callback()
+        } else {
+            console.log('non posso eseguire')
         }
-        arr[count]()
-        count++
-    }, time);
-
-
+    }
 }
 
 
-sequenzaOperazioni([esempio1, esempio2, esempio3], 1000)
+const throttledLog = creaThrottler(() => console.log("Eseguito!"), 2000);
+
+throttledLog(); // ✅ "Eseguito!"
+throttledLog(); // ❌ Ignorato (chiamato troppo presto)
+setTimeout(throttledLog, 2500); // ✅ "Eseguito!" (dopo 2.5 secondi)
